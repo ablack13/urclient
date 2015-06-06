@@ -2,11 +2,15 @@ package sample.scijoker.com.urclient;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 
 import com.scijoker.urclient.OnResponseListener;
+import com.scijoker.urclient.Response;
+
+import java.util.Map;
 
 public class DemoActivity extends AppCompatActivity {
     private Button btnAuth;
@@ -37,9 +41,14 @@ public class DemoActivity extends AppCompatActivity {
 
     private OnResponseListener onAuthResponseListener = new OnResponseListener() {
         @Override
-        public void onResponseSuccessful(Object response) {
+        public void onResponseSuccessful(Response response) {
+            if (response.getResponseHeaders() != null) {
+                for (Map.Entry<String, String> stringStringEntry : response.getResponseHeaders().entrySet()) {
+                    Log.d("onResponseSuccessful", "header: " + stringStringEntry.getValue());
+                }
+            }
             btnAuth.setVisibility(View.GONE);
-            webView.loadDataWithBaseURL("", (String) response, "", "utf-8", "");
+            webView.loadDataWithBaseURL("", (String) response.getResponseObject(), "", "utf-8", "");
         }
 
         @Override

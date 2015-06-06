@@ -45,7 +45,7 @@ public class URClient {
                 if (onResponseListener == null) {
                     onResponseListener = new OnResponseListener() {
                         @Override
-                        public void onResponseSuccessful(Object response) {
+                        public void onResponseSuccessful(com.scijoker.urclient.Response response) {
                             //not use, as default
                         }
 
@@ -84,7 +84,7 @@ public class URClient {
             if (errorHandlerImpl != null) {
                 errorHandlerImpl.handleClientError(response, onResponseListener);
             } else {
-                onResponseListener.onResponseSuccessful(response);
+                onResponseListener.onResponseSuccessful((com.scijoker.urclient.Response) response);
             }
         }
     };
