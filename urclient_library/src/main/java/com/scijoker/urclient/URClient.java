@@ -82,7 +82,7 @@ public class URClient {
         public void onResponse(final Object response) {
             isRunning = false;
             if (errorHandlerImpl != null) {
-                errorHandlerImpl.handleClientError(response, onResponseListener);
+                errorHandlerImpl.handleClientError((com.scijoker.urclient.Response) response, onResponseListener);
             } else {
                 onResponseListener.onResponseSuccessful((com.scijoker.urclient.Response) response);
             }
