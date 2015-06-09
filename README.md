@@ -44,7 +44,7 @@ Grab via Maven:
 <i><b>IMPORTANT!</b></i>: 
 
 
-Return by URClient object must implements <b>IResponseObject</b> interface
+Returning object must implements <b>IResponseObject</b> interface
 
 
 Add in your <b>Singleton</b> in <b>onCreate()</b>:
