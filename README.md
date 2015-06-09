@@ -87,9 +87,9 @@ You can see simple example in <b>sample</b> module
 
 	 [retryPolice(int timeoutInMillis, int maximumRetry, float BackoffMultiplier);] - set timeout and max retries
 
-	 priority(PRIORITY priority); - request priority: LOW, NORMAL,HIGH, IMMEDIATE
+	 [priority(PRIORITY priority);] - request priority: LOW, NORMAL,HIGH, IMMEDIATE
 
-	 send(String url, METHOD type, Class returnObject);  - send request to server
+	 [send(String url, METHOD type, Class returnObject);]  - send request to server
 	 
 All functions can be use manually
 
