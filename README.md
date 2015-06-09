@@ -65,12 +65,7 @@ Create request by builder:
 ```
 
 
-
-
-#Demonstration
-
-
-You can see simple example in <b>sample</b> module
+Example in <b>sample</b> module
 
 <hr>
 
