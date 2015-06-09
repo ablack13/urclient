@@ -60,7 +60,7 @@ Create request by builder:
         return URClient.create()
                 .responseListener(onResponseListener)
                 .cancelListener(onCancelListener)
-                .send(ImgurApiHelper.AUTHORIZATION, URClient.METHOD.GET, String.class);
+                .send("URL_for_send_request", URClient.METHOD.GET, ReturnedObject.class);
     }
 ```
 
