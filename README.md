@@ -37,8 +37,9 @@ Grab via Maven:
 
 Simple POST request
 
-
+...java
  URClient.create()
-         .responseListener(onResponseListener)
-         .cancelListener(onCancelListener)
-         .send(ImgurApiHelper.AUTHORIZATION, URClient.METHOD.POST, String.class);
+ .responseListener(onResponseListener)
+ .cancelListener(onCancelListener)
+ .send(ImgurApiHelper.AUTHORIZATION, URClient.METHOD.POST, String.class);
+...
