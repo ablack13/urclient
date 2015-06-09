@@ -69,7 +69,7 @@ Example in <b>sample</b> module
 
 <hr>
 
-#Supported features:
+#Support features:
 
 	 [responseListener(OnResponseListener onResponseListener);] - set listener on response from server
  
