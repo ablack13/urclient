@@ -58,7 +58,7 @@ Create request by builder:
 #Demonstration
 
 
-You can see si,ple example in <Sample> module
+You can see simple example in <Sample> module
 
 <hr>
 
