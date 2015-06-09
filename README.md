@@ -43,6 +43,10 @@ Grab via Maven:
 #Usage
 <i><b>IMPORTANT!</b></i>: 
 
+
+Return by URClient object must implements <b>IResponseObject</b> interface
+
+
 Add in your <b>Singleton</b> in <b>onCreate()</b>:
 
 
@@ -59,6 +63,9 @@ Create request by builder:
                 .send(ImgurApiHelper.AUTHORIZATION, URClient.METHOD.GET, String.class);
     }
 ```
+
+
+
 
 #Demonstration
 
