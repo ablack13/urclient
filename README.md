@@ -13,6 +13,6 @@ The lib is available on <b>JitPack.io</b>, you can find it with Gradle, please a
 	}
 	
 	
-dependencies {
+	dependencies {
 	        compile 'com.github.scijoker:urclient:0.1.2'
 	}
