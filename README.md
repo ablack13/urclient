@@ -16,3 +16,18 @@ The lib is available on <b>JitPack.io</b>, you can find it with Gradle, please a
 	dependencies {
 	        compile 'com.github.scijoker:urclient:0.1.2'
 	}
+	
+<h3>Maven</h3>
+Grab via Maven:
+
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+	
+	
+	<dependency>
+	    <groupId>com.github.scijoker</groupId>
+	    <artifactId>urclient</artifactId>
+	    <version>0.1.2</version>
+	</dependency>
