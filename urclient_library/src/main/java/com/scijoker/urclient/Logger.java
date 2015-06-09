@@ -22,6 +22,10 @@ import java.io.InputStream;
 public class Logger {
     public static boolean DEBUG;
 
+    public static void i(String className, String message) {
+        Log.i("[URClientLoggerINFO_" + className + "]", message);
+    }
+
     public static void log(String className, String message) {
         log(className, message, false);
     }
@@ -84,6 +88,5 @@ public class Logger {
                 }
             }
         }).start();
-
     }
 }

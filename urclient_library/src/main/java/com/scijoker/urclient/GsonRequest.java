@@ -1,35 +1,14 @@
 package com.scijoker.urclient;
 
-import android.os.Environment;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonRequest;
 import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
 
-import org.apache.http.protocol.HTTP;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.InflaterInputStream;
 
 /**
  * Created by scijoker on 03.12.14.
@@ -42,6 +21,7 @@ class GsonRequest<T> extends JsonRequest<T> {
     private final Response.Listener<T> listener;
     private final OnCancelListener cancelListener;
     private String accessKey;
+    private Priority priority;
 
     /**
      * Make a GET/POST request and return a parsed object from JSON.
@@ -50,7 +30,7 @@ class GsonRequest<T> extends JsonRequest<T> {
      * @param clazz   Relevant class object, for Gson's reflection
      * @param headers Map of request headers
      */
-    public GsonRequest(String url, int methodType, String jsonBody, Class clazz, Map headers, Response.Listener listener, Response.ErrorListener errorListener, OnCancelListener cancelListener, String accessKey, DefaultRetryPolicy retryPolicy) {
+    public GsonRequest(String url, int methodType, String jsonBody, Class clazz, Map headers, Response.Listener listener, Response.ErrorListener errorListener, OnCancelListener cancelListener, String accessKey, DefaultRetryPolicy retryPolicy, Priority priority) {
         /*
         * public JsonRequest(int method, String url, String requestBody, Listener<T> listener,
             ErrorListener errorListener) {*/
@@ -60,7 +40,13 @@ class GsonRequest<T> extends JsonRequest<T> {
         this.listener = listener;
         this.cancelListener = cancelListener;
         this.accessKey = accessKey;
+        this.priority = priority;
         setRetryPolicy(retryPolicy);
+    }
+
+    @Override
+    public Priority getPriority() {
+        return priority;
     }
 
     @Override

@@ -6,15 +6,20 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.scijoker.urclient.ErrorHandlerImpl;
+import com.scijoker.urclient.OnCancelListener;
 import com.scijoker.urclient.OnResponseListener;
 import com.scijoker.urclient.Response;
+import com.scijoker.urclient.URClient;
 
 import java.util.Map;
 
 public class DemoActivity extends AppCompatActivity {
-    private Button btnAuth;
+    private Button btnAuth, btnCancel;
     private WebView webView;
+    private URClient.Builder authRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,7 @@ public class DemoActivity extends AppCompatActivity {
 
     private void initUI() {
         btnAuth = (Button) findViewById(R.id.btn_auth);
+        btnCancel = (Button) findViewById(R.id.btn_cancel);
         webView = (WebView) findViewById(R.id.webview);
     }
 
@@ -34,7 +40,15 @@ public class DemoActivity extends AppCompatActivity {
         btnAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Requestor.makeAuthorization(onAuthResponseListener);
+                authRequest = Requestor.makeAuthorization(onAuthResponseListener, onCancelListener);
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (authRequest != null) {
+                    authRequest.cancel();
+                }
             }
         });
     }
@@ -56,4 +70,18 @@ public class DemoActivity extends AppCompatActivity {
             webView.loadDataWithBaseURL("", "Error", "", "utf-8", "");
         }
     };
+    private OnCancelListener onCancelListener = new OnCancelListener() {
+        @Override
+        public void onResponseCancelListener() {
+            Toast.makeText(getApplicationContext(), "Request canceled", Toast.LENGTH_LONG).show();
+        }
+    };
+
+    private static void makePostRequest(Class returnObject, Object body, String url, OnResponseListener onResponseListener, ErrorHandlerImpl handler) {
+        URClient.create()
+                .body(body)
+                .responseListener(onResponseListener)
+                .errorHandler(handler)
+                .send(url, URClient.METHOD.POST, returnObject);
+    }
 }
