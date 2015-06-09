@@ -1,6 +1,10 @@
 #URClient
 URClient is a RESTful client for Android ( based on Google Volley) that provides an easy way to create Client-Server application
 
+
+<hr>
+
+
 #Integration
 
 <h3>Gradle</h3>
@@ -33,7 +37,20 @@ Grab via Maven:
 	</dependency>
 
 
+<hr>
+
+
 #Usage
+First step: 
+Create sigleton (extends Application):
+Add in <b>onCreate()</b>:
+
+<URClientService.init(getApplicationContext(), true);
+
+<i>P.S. Second parametr for debug your requests</i>
+
+<hr>
+
 
 Simple POST request
 
