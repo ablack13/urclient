@@ -47,15 +47,16 @@ Add in <b>onCreate()</b>:
 
 <URClientService.init(getApplicationContext(), true);
 
-<i>P.S. Second parametr for debug your requests</i>
+<i>P.S. Second parameter for debug your requests</i> (see in <b>LogCat</b> and write to file)
 
 <hr>
 
+#Demonstration
 
-Simple POST request
 
+You can see si,ple example in <Sample> module
 
- URClient.create()<br />
-	 .responseListener(onResponseListener)<br />
-	 .cancelListener(onCancelListener)<br />
-       	 .send(ImgurApiHelper.AUTHORIZATION, URClient.METHOD.POST, String.class);<br />
+<hr>
+
+#Supported features:
+- 
