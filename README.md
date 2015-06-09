@@ -41,15 +41,15 @@ Grab via Maven:
 
 
 #Usage
-First step: 
-Create sigleton (extends Application):
-Add in <b>onCreate()</b>:
+<i><b>IMPORTANT!</b></i>: 
 
-<URClientService.init(getApplicationContext(), true);
+Create sigleton (extends Application).Add in <b>onCreate()</b>:
 
-<i>P.S. Second parameter for debug your requests</i> (see in <b>LogCat</b> and write to file)
+
+<URClientService.init(getApplicationContext());
 
 <hr>
+
 
 #Demonstration
 
