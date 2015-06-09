@@ -43,12 +43,16 @@ Grab via Maven:
 #Usage
 <i><b>IMPORTANT!</b></i>: 
 
-Create sigleton (extends Application).Add in <b>onCreate()</b>:
+Add in your <b>Singleton</b> in <b>onCreate()</b>:
 
 
-<URClientService.init(getApplicationContext());
+	<URClientService.init(getApplicationContext());
 
 <hr>
+
+Create request by builder:
+
+	URClient.create()
 
 
 #Demonstration
