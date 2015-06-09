@@ -58,9 +58,39 @@ Create request by builder:
 #Demonstration
 
 
-You can see simple example in <Sample> module
+You can see simple example in <b>Sample</b> module
 
 <hr>
 
 #Supported features:
-- 
+
+	 [responseListener(OnResponseListener onResponseListener);] - set listener on response from server
+ 
+	 [startListener(OnStartListener StartRequestListener);] - set listener on start request
+ 
+	 [cancelListener(OnCancelListener CancelListener);] - be call after cancel request 
+ 
+	 [cancel();] - cancel request
+ 
+	 [errorHandler(ErrorHandlerImpl errorHandlerImpl);] - create custom error handler for catch from response
+ 
+	 [save(String AccessKey);] - save & and protect your data from server by encoding response
+
+	 [headers(Map headers);] - set custom headers for request
+
+	 [body(Object Body);] - set body for POST request
+
+	 [retryPolice(int timeoutInMillis, int maximumRetry, float BackoffMultiplier);] - set timeout and max retries
+
+	 priority(PRIORITY priority); - request priority: LOW, NORMAL,HIGH, IMMEDIATE
+
+	 send(String url, METHOD type, Class returnObject);  - send request to server
+	 
+All functions can be use manually
+
+
+<hr>
+
+
+#License
+
