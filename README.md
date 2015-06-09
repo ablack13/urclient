@@ -31,3 +31,14 @@ Grab via Maven:
 	    <artifactId>urclient</artifactId>
 	    <version>0.1.2</version>
 	</dependency>
+
+
+#Usage
+
+Simple POST request
+
+
+ URClient.create()
+         .responseListener(onResponseListener)
+         .cancelListener(onCancelListener)
+         .send(ImgurApiHelper.AUTHORIZATION, URClient.METHOD.POST, String.class);
