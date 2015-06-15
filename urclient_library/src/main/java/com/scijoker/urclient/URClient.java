@@ -128,19 +128,10 @@ public class URClient {
         }
     };
 
-    @Deprecated
-    public static Builder createRequest() {
-        return create();
-    }
 
     public static Builder create() {
         PACKAGE_NAME = URClientService.getContext().getPackageName();
         return new URClient().new Builder();
-    }
-
-    @Deprecated
-    private void cancelRequest() {
-        cancel();
     }
 
     public void cancel() {
@@ -169,19 +160,10 @@ public class URClient {
             _TAG = "URClient_" + System.currentTimeMillis();
         }
 
-        @Deprecated
-        public Builder setOnResponseListener(OnResponseListener onResponseListener) {
-            return responseListener(onResponseListener);
-        }
 
         public Builder responseListener(OnResponseListener onResponseListener) {
             URClient.this.onResponseListener = onResponseListener;
             return this;
-        }
-
-        @Deprecated
-        public Builder setOnStartListener(OnStartListener StartRequestListener) {
-            return startListener(StartRequestListener);
         }
 
         public Builder startListener(OnStartListener StartRequestListener) {
@@ -189,10 +171,6 @@ public class URClient {
             return this;
         }
 
-        @Deprecated
-        public Builder setOnCancelListener(OnCancelListener CancelListener) {
-            return cancelListener(CancelListener);
-        }
 
         public Builder cancelListener(OnCancelListener CancelListener) {
             cancelListener = CancelListener;
@@ -208,50 +186,27 @@ public class URClient {
             return isCanceled;
         }
 
-        @Deprecated
-        public Builder setErrorHandler(ErrorHandlerImpl errorHandlerImpl) {
-            return errorHandler(errorHandlerImpl);
-        }
-
         public Builder errorHandler(ErrorHandlerImpl errorHandlerImpl) {
             URClient.this.errorHandlerImpl = errorHandlerImpl;
             return this;
         }
 
 
-        @Deprecated
-        public Builder saveOnDevice(String AccessKey) {
-            return save(AccessKey);
-        }
 
         public Builder save(String AccessKey) {
             accessKey = AccessKey;
             return this;
         }
 
-        @Deprecated
-        public Builder setHeaders(Map headers) {
-            return headers(headers);
-        }
 
         public Builder headers(Map headers) {
             mapHeaders = headers;
             return this;
         }
 
-        @Deprecated
-        public Builder setBody(Object Body) {
-            return body(Body);
-        }
-
         public Builder body(Object Body) {
             body = Body;
             return this;
-        }
-
-        @Deprecated
-        public Builder setRetryPolice(int timeoutInMillis, int maximumRetry, float BackoffMultiplier) {
-            return retryPolice(timeoutInMillis, maximumRetry, BackoffMultiplier);
         }
 
         public Builder retryPolice(int timeoutInMillis, int maximumRetry, float BackoffMultiplier) {
@@ -264,26 +219,6 @@ public class URClient {
         public Builder priority(PRIORITY priority) {
             URClient.this.priority = priority;
             return this;
-        }
-
-        @Deprecated
-        public Builder sendGET(String url, Class returnObject) {
-            return send(url, METHOD.GET, returnObject);
-        }
-
-        @Deprecated
-        public Builder sendPOST(String url, Class returnObject) {
-            return send(url, METHOD.POST, returnObject);
-        }
-
-        @Deprecated
-        public Builder sendDELETE(String url, Class returnObject) {
-            return send(url, METHOD.DELETE, returnObject);
-        }
-
-        @Deprecated
-        public Builder sendPUT(String url, Class returnObject) {
-            return send(url, METHOD.PUT, returnObject);
         }
 
         public Builder send(String url, METHOD type, Class returnObject) {
