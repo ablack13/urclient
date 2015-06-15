@@ -18,7 +18,7 @@ The lib is available on <b>JitPack.io</b>, you can find it with Gradle, please a
 	
 	
 	dependencies {
-	        compile 'com.github.scijoker:urclient:0.1.2'
+	        compile 'com.github.scijoker:urclient:0.1.3'
 	}
 	
 <h3>Maven</h3>
