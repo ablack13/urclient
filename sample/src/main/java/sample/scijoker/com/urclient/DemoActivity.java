@@ -62,7 +62,7 @@ public class DemoActivity extends AppCompatActivity {
                 }
             }
             btnAuth.setVisibility(View.GONE);
-            webView.loadDataWithBaseURL("", (String) response.getResponseObject(), "", "utf-8", "");
+            webView.loadDataWithBaseURL("", (String) response.getResponseObj(), "", "utf-8", "");
         }
 
         @Override

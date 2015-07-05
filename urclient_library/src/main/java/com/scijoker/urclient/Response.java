@@ -8,17 +8,23 @@ import java.util.Map;
 public class Response {
     private Object response;
     private Map<String, String> headers;
+    private Object tagObj;
 
-    public Response(Object response, Map<String, String> headers) {
+    public Response(Object response, Map<String, String> headers, Object tagObj) {
         this.response = response;
         this.headers = headers;
+        this.tagObj = tagObj;
     }
 
-    public Object getResponseObject() {
+    public Object getResponseObj() {
         return response;
     }
 
     public Map<String, String> getResponseHeaders() {
         return headers;
+    }
+
+    public Object getTagObj() {
+        return tagObj;
     }
 }

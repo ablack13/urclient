@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by scijoker on 03.12.14.
  */
 class GsonRequestFactory {
-    public static GsonRequest create(String url, int methodType, Object body, Class returnedObjectClass, Map mapHeaders, Response.Listener listener, Response.ErrorListener errorListener, OnCancelListener cancelListener, String accessKey, DefaultRetryPolicy retryPolicy, Request.Priority priority) {
+    public static GsonRequest create(String url, int methodType, Object body, Class returnedObjectClass, Map mapHeaders, Response.Listener listener, Response.ErrorListener errorListener, OnCancelListener cancelListener, String accessKey, DefaultRetryPolicy retryPolicy, Request.Priority priority, Object tagObject) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().serializeNulls().create();
         GsonRequest gsonRequest = null;
         String jsonStr = null;
@@ -28,7 +28,7 @@ class GsonRequestFactory {
             jsonStr = "";
         }
         Logger.log("URClientGsonRequestFactory", "request json: " + jsonStr);
-        gsonRequest = new GsonRequest(url, methodType, jsonStr, returnedObjectClass, mapHeaders, listener, errorListener, cancelListener, accessKey, retryPolicy, priority);
+        gsonRequest = new GsonRequest(url, methodType, jsonStr, returnedObjectClass, mapHeaders, listener, errorListener, cancelListener, accessKey, retryPolicy, priority, tagObject);
         return gsonRequest;
     }
 }

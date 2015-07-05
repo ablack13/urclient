@@ -22,15 +22,18 @@ class GsonRequest<T> extends JsonRequest<T> {
     private final OnCancelListener cancelListener;
     private String accessKey;
     private Priority priority;
+    private Object tagObj;
+
 
     /**
      * Make a GET/POST request and return a parsed object from JSON.
      *
-     * @param url     URL of the request to make
-     * @param clazz   Relevant class object, for Gson's reflection
-     * @param headers Map of request headers
+     * @param url       URL of the request to make
+     * @param clazz     Relevant class object, for Gson's reflection
+     * @param headers   Map of request headers
+     * @param tagObject
      */
-    public GsonRequest(String url, int methodType, String jsonBody, Class clazz, Map headers, Response.Listener listener, Response.ErrorListener errorListener, OnCancelListener cancelListener, String accessKey, DefaultRetryPolicy retryPolicy, Priority priority) {
+    public GsonRequest(String url, int methodType, String jsonBody, Class clazz, Map headers, Response.Listener listener, Response.ErrorListener errorListener, OnCancelListener cancelListener, String accessKey, DefaultRetryPolicy retryPolicy, Priority priority, Object tagObject) {
         /*
         * public JsonRequest(int method, String url, String requestBody, Listener<T> listener,
             ErrorListener errorListener) {*/
@@ -41,6 +44,7 @@ class GsonRequest<T> extends JsonRequest<T> {
         this.cancelListener = cancelListener;
         this.accessKey = accessKey;
         this.priority = priority;
+        this.tagObj = tagObject;
         setRetryPolicy(retryPolicy);
     }
 
@@ -78,10 +82,10 @@ class GsonRequest<T> extends JsonRequest<T> {
         }
         Logger.log(TAG, json, true, "parseNetworkResponse_" + System.currentTimeMillis());
         if (clazz.getName().equals(String.class.getName())) {
-            response = new com.scijoker.urclient.Response(json, networkResponse.headers);
+            response = new com.scijoker.urclient.Response(json, networkResponse.headers, tagObj);
             return (Response<T>) Response.success(response, HttpHeaderParser.parseCacheHeaders(networkResponse));
         } else {
-            response = new com.scijoker.urclient.Response(gson.fromJson(json, clazz), networkResponse.headers);
+            response = new com.scijoker.urclient.Response(gson.fromJson(json, clazz), networkResponse.headers, tagObj);
             return (Response<T>) Response.success(
                     response, HttpHeaderParser.parseCacheHeaders(networkResponse));
         }

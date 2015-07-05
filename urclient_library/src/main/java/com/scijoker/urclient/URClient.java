@@ -32,6 +32,7 @@ public class URClient {
     private int maxRetry = 1;
     private float backoffMultiplier = 1.0f;
     private PRIORITY priority = PRIORITY.NORMAL;
+    private Object tagObject;
 
     public static enum METHOD {POST, GET, PUT, DELETE}
 
@@ -76,7 +77,7 @@ public class URClient {
                 if (returnObjectClass == null) {
                     throw new NullPointerException("returnObject can't be a null");
                 }
-                gsonRequest = GsonRequestFactory.create(url, methodType, body, returnObjectClass, mapHeaders, listener, errorListener, cancelListener, accessKey, new DefaultRetryPolicy(timeout, maxRetry, backoffMultiplier), getPriority());
+                gsonRequest = GsonRequestFactory.create(url, methodType, body, returnObjectClass, mapHeaders, listener, errorListener, cancelListener, accessKey, new DefaultRetryPolicy(timeout, maxRetry, backoffMultiplier), getPriority(),tagObject);
                 gsonRequest.setTag(TAG);
                 VolleySingleton.getInstance(context, Logger.DEBUG).addToRequestQueue(gsonRequest);
             }
@@ -192,7 +193,6 @@ public class URClient {
         }
 
 
-
         public Builder save(String AccessKey) {
             accessKey = AccessKey;
             return this;
@@ -218,6 +218,11 @@ public class URClient {
 
         public Builder priority(PRIORITY priority) {
             URClient.this.priority = priority;
+            return this;
+        }
+
+        public Builder tag(Object TagObject) {
+            tagObject = TagObject;
             return this;
         }
 
