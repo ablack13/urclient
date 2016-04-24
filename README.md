@@ -1,4 +1,4 @@
-#URClient
+#URClient (DEPRECATED)
 URClient is a RESTful client for Android ( based on Google Volley) that provides an easy way to create Client-Server application
 
 
